@@ -36,7 +36,7 @@ const theme = createTheme({
       primary: '#212121',
       secondary: '#757575',
       disabled: '#9e9e9e',
-      sidebar: '#a2a3b7',
+      sidebar: '#FFFFFFB2',
       sidebarActive: '#ffffff',
     },
   },
