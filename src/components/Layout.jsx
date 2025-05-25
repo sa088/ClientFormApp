@@ -1,28 +1,25 @@
-import { useState } from 'react';
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
-import Sidebar from './Sidebar';
-import Header from './Header';
-import ClientForm from './ClientForm';
+import { useState } from "react";
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
+import Sidebar from "./Sidebar";
+import Header from "./Header";
+import ClientForm from "./ClientForm";
 
 const drawerWidth = 260;
 
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
+const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
     ({ theme, open }) => ({
-        // flexGrow: 1,
-        transition: theme.transitions.create('margin', {
+        transition: theme.transitions.create("margin", {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-        // marginLeft: 0,
         ...(open && {
-            transition: theme.transitions.create('margin', {
+            transition: theme.transitions.create("margin", {
                 easing: theme.transitions.easing.easeOut,
                 duration: theme.transitions.duration.enteringScreen,
             }),
-            //   marginLeft: drawerWidth,
         }),
-    }),
+    })
 );
 
 const Layout = () => {
@@ -38,7 +35,7 @@ const Layout = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex', height: '100vh' }}>
+        <Box sx={{ display: "flex", height: "100vh" }}>
             <Sidebar
                 open={open}
                 mobileOpen={mobileOpen}
@@ -51,8 +48,8 @@ const Layout = () => {
                     component="div"
                     sx={{
                         p: { xs: 2, md: 3 },
-                        backgroundColor: '#f5f5f5',
-                        minHeight: 'calc(100vh - 64px)'
+                        backgroundColor: "#f5f5f5",
+                        minHeight: "calc(100vh - 64px)",
                     }}
                 >
                     <ClientForm />

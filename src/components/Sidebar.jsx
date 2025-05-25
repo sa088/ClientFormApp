@@ -7,9 +7,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
 import Collapse from "@mui/material/Collapse";
-import Divider from "@mui/material/Divider";
 import InputBase from "@mui/material/InputBase";
 
 // Icons
@@ -27,9 +25,9 @@ import ArticleIcon from "@mui/icons-material/Article";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
-import PersonIcon from "@mui/icons-material/Person";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import StarIcon from "@mui/icons-material/Star";
+import CloseIcon from "@mui/icons-material/Close";
 
 const menuItems = [
   {
@@ -50,7 +48,20 @@ const menuItems = [
     icon: <FolderIcon />,
     path: "/file",
     hasSubmenu: true,
-    submenu: [],
+    submenu: [
+      {
+        id: "salary-files",
+        text: "Salary Files",
+        icon: <AccountBalanceWalletIcon />,
+        path: "/settings/salary-files",
+      },
+      {
+        id: "tax-files",
+        text: "Tax Files",
+        icon: <ReceiptIcon />,
+        path: "/settings/tax-files",
+      },
+    ],
   },
   {
     id: "settings",
@@ -128,9 +139,23 @@ const SidebarContent = ({
   openSubMenus,
   handleSubMenuToggle,
   activeItem,
+  handleDrawerToggle,
 }) => {
   return (
     <>
+      <Box
+        sx={{
+          display: { xs: "block", sm: "none" },
+          cursor: "pointer",
+          color: "text.white",
+          alignSelf: "flex-end",
+          marginBottom: "6px",
+        }}
+        onClick={handleDrawerToggle}
+      >
+        <CloseIcon />
+      </Box>
+
       <Box
         sx={{
           p: "10px",
@@ -143,7 +168,7 @@ const SidebarContent = ({
         <Typography
           variant="h6"
           component="div"
-          sx={{ color: "text.sidebarActive", fontWeight: "bold" }}
+          sx={{ color: "text.white", fontWeight: "bold" }}
         >
           LOGO
         </Typography>
@@ -265,9 +290,9 @@ const SidebarContent = ({
                               bgcolor: "primary.dark",
                             },
                             "& .MuiListItemIcon-root, & .MuiListItemText-primary":
-                              {
-                                color: "text.sidebarActive",
-                              },
+                            {
+                              color: "text.sidebarActive",
+                            },
                           },
                         }}
                       >
@@ -347,7 +372,7 @@ const Sidebar = ({ open, mobileOpen, drawerWidth, handleDrawerToggle }) => {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Better open performance on mobile
+          keepMounted: true,
         }}
         sx={{
           display: { xs: "block", sm: "none" },
@@ -362,10 +387,11 @@ const Sidebar = ({ open, mobileOpen, drawerWidth, handleDrawerToggle }) => {
         }}
       >
         <SidebarContent
+          activeItem={activeItem}
           handleActiveItem={handleActiveItem}
           openSubMenus={openSubMenus}
           handleSubMenuToggle={handleSubMenuToggle}
-          activeItem={activeItem}
+          handleDrawerToggle={handleDrawerToggle}
         />
       </Drawer>
 

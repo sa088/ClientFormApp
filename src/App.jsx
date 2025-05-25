@@ -1,7 +1,7 @@
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import Layout from './components/Layout';
-import theme from './theme/theme';
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import Layout from "./components/Layout";
+import theme from "./theme/theme";
 
 function App() {
   return (
